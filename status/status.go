@@ -23,6 +23,10 @@ func Newf(c code.Code, format string, a ...interface{}) *Status {
 
 // Err returns an error representing c and msg.  If c is OK, returns nil.
 func Err(c code.Code, msg string) error {
+	if c == code.OK {
+		return nil
+	}
+
 	return New(c, msg).Err()
 }
 
